@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            color: rgba(240, 248, 255, 0.925);
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            animation-name: stable;
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            background-color: #111;
+            animation-play-state: paused;
+            animation-delay: 1s;
+            /* background-image: linear-gradient(to right bottom , #111 , #222 , #333); */
+        }
+        @keyframes stable {
+            0% {
+                background-color: #111;
+            } 20% {
+                background-color: #422929;
+            } 40% {
+                background-color: #7e624f;
+            } 60% {
+                background-color: #888859;
+            } 80% {
+                background-color: #4a7261;
+            } 100% {
+                background-color: #111;
+            }
+        }
+        .container {
+            text-align: center;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .container h5 {
+            background-color: rgb(140, 157, 255);
+            padding: 10px;
+            border-radius: 0.3rem;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
+        .container h5:hover {
+            background-color: #222;
+            box-shadow: 0 0 15px rgba(140, 157, 255, 0.705);
+        }
+        .container img{
+            width: 2rem;
+            height: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <audio src="images/music.m4a" preload="auto" id="music"></audio>
+       <div>
+        <img src="images/download-solid-24.png" alt="download.png" title="download">
+        <a href="images/music.m4a" style="text-decoration: none;" id="link" download="music"><h5>Download</h5></a>
+       </div>
+        <div>
+        <img src="images/pause-regular-24.png" alt="pause.png" title="pause">
+        <h5 id="pause" onclick="play();">play</h5>
+        </div>
+        <div>
+        <img src="images/play-regular-24.png" alt="play.png" title="play">
+        <h5 id="play" onclick="pause();">pause</h5>
+        </div>
+       <div>
+        <img src="images/reset-regular-24.png" alt="reset.png" title="reset">
+        <h5 id="reset" onclick="reset();">reset</h5>
+       </div>
+        <div>
+        <img src="images/volume-full-regular-24.png" alt="volume-full.png" title="volume-full">
+        <h5 id="volume-full" onclick="volume_full();">volume-full</h5>
+        </div>
+        <div>
+        <img src="images/volume-mute-regular-24.png" alt="volume-mute.png" title="volume-mute">
+        <h5 id="volume-mute" onclick="volume_mute();">volume-mute</h5>
+        </div>
+        <div>
+            <img src="images/deezer-logo-24.png" alt="deezer.png" title="deezer">
+            <h5 id="slowDown" onclick="slowdown();">slowDown</h5>
+        </div>
+        <div>
+            <img src="images/deezer-logo-24.png" alt="deezer.png" title="deezer">
+            <h5 id="speedUp" onclick="speedup();">speedUp</h5>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let pausemusic = document.getElementById("pause");
+        let playmusic = document.getElementById("play");
+        let resetmusic = document.getElementById("reset");
+        let volume_fullmusic = document.getElementById("volume-full");
+        let volume_mutemusic = document.getElementById("volume-mute");
+        let speedUp = document.getElementById("speedUp");
+        let slowDown = document.getElementById("slowDown");
+         // audio music
+        let music = document.getElementById("music");
+        function pause(){
+            music.pause();
+            document.body.style.animationPlayState = "paused";
+        }
+        function play(){
+            music.play();
+            document.body.style.animationPlayState = "running";
+        }
+        function  reset(){
+            music.load();
+        }
+        function volume_full(){
+            music.volume = 1;
+        }
+        function volume_mute(){
+            music.volume = 0;
+        }
+        function slowdown() {
+            music.playbackRate -=0.10;
+        }
+        function speedup() {
+            music.playbackRate +=0.10;
+        }
+    </script>
+    <noscript>
+       javascript is blocked
+    </noscript>
+</body>
+</html>
